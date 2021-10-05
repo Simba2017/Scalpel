@@ -248,6 +248,18 @@ class BaseCaseTests(unittest.TestCase):
              {'file': 'case24.py', 'line_number': 2, 'variable': 'y', 'function': 'my_function', 'type': 'any'}]
         )
 
+    def test_case_26(self):
+        inferrer = TypeInference(name='case26', entry_point='basecase/case26.py')
+        inferrer.infer_types()
+        inferred = inferrer.get_types()
+        self.assertEqual(
+            inferred,
+            [{'file': 'case26.py', 'line_number': 10, 'variable': 'x', 'function': 'test', 'type': 'Tuple[ObjRand]'},
+             {'file': 'case26.py', 'line_number': 11, 'variable': 'x', 'function': 'test', 'type': 'Tuple[str]'},
+             {'file': 'case26.py', 'line_number': 12, 'variable': 'y', 'function': 'test', 'type': 'None'},
+             {'file': 'case26.py', 'line_number': 14, 'variable': 'y', 'function': 'test', 'type': 'str'}]
+        )
+
 
 if __name__ == '__main__':
     unittest.main()
